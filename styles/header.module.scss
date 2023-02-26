@@ -1,0 +1,10 @@
+.header {
+    height: auto;
+    width: 100%;
+    background: gold;
+
+    .headcontainer {
+        display: flex;
+        justify-content: space-between;
+    }
+}

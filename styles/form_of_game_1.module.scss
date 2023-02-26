@@ -1,0 +1,17 @@
+.formContainer {
+    display: grid;
+    place-items: center;
+    font-size: var(--body);
+    font-weight: 800;
+
+
+    & .open {
+        display: block;
+    }
+    
+    & .close {
+        display: none;
+    }
+}
+
+

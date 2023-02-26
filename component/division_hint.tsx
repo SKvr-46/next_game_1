@@ -69,12 +69,17 @@ export const Division_Hint = (props:DivisionHintPropsType) => {
 
     return(
         <div className={styles.division_hintwrapper}>
-            <div className={toggleHintIsOpen(questiontime) ? styles.open : styles.close}>
+            <div>
                 <label>
-                    1~10までの整数を入れて下さい:
+                    1~10までの整数を入れて下さい：
                     <input  onChange={(event) => setDivisionNumber(Number(event.target.value))}/>
                 </label>
-                <button  onClick={() => AnswertoQuestion(divisionNumber)}>あまりを出す</button>
+                <button 
+                onClick={() => AnswertoQuestion(divisionNumber)}
+                disabled={!toggleHintIsOpen(questiontime)}
+                >
+                    計算する
+                </button>
             </div>
             {answersToQuestion.map((answer, index) => (
             <p key={index} className={styles.answer}>

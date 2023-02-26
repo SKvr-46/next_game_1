@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { GuessNumberGame } from './guess_number_game'; 
+import styles from "styles/show_the_answer_button.module.scss"
 
 type ShowTheAnswerButtonPropsType = {
     numberToGuess:number
@@ -28,11 +29,16 @@ export const ShowTheAnswerButton = (props:ShowTheAnswerButtonPropsType) => {
     const showTheAnswer = () => {
         setAttempts(0)
         setMessage("The Answer Is:  "+ numberToGuess)
-        setNumberToGuess(Math.floor(Math.random() * 1000) + 1)
     }
 
     return(
-        <button disabled={gameIsOver(attempts)} onClick={showTheAnswer}>Show The Answer</button>
+        <button
+        disabled={gameIsOver(attempts)}
+        onClick={showTheAnswer}
+        className={styles.btn}
+        >
+            Show The Answer
+        </button>
     )
 }
 

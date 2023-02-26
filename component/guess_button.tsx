@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import styles from "styles/guess_button.module.scss"
 
 type guessTheNumberButtonPropsType = {
     userGuess:string
@@ -40,7 +41,13 @@ export const GuessButton = (props:guessTheNumberButtonPropsType) => {
 
 
     return(
-        <button disabled={gameIsOver(attempts)} onClick={() => guessTheNumber()}>Guess</button>
+        <button 
+        disabled={gameIsOver(attempts)} 
+        onClick={() => guessTheNumber()}
+        className={styles.btn}
+        >
+            GUESS
+        </button>
     )
 }
 

@@ -3,10 +3,50 @@
     place-items: center;
     font-size: var(--body);
     font-weight: 800;
+    width: 100%;
 
+    & .responses {
+        text-align: left;
+
+        & label {
+            font-size: var(--heading2);
+            & input {
+                font-size: var(--heading2);
+            }
+        }
+
+        & .guessbutton {
+            display: grid;
+            place-items: center;
+        }
+
+        & .attempts {
+            margin-top: var(--space-xs);
+            margin-bottom: var(--space-xs);
+            color: red;
+
+            &::before {
+                content: "Total Attempts: ";
+                color: black;
+            }
+        }
+        & .questiontime {
+            margin-top: var(--space-xs);
+            margin-bottom: var(--space-xs);
+            color: blue;
+
+            &::before {
+                content: "質問した回数(最大5回): ";
+                color: black;
+            }
+        }
+    }
 
     & .open {
         display: block;
+        border: 2px solid darkmagenta;
+        border-radius: 30px;
+        padding: var(--space-xs);
     }
     
     & .close {

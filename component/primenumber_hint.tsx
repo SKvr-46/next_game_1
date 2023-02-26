@@ -71,8 +71,8 @@ const AnswertoHint = (numberToGuess:number) => {
 return(
     <div className={styles.primenumber_hintwrapper}>
         <label>
-            素数か判定する:
-            <button  disabled={buttonClicked} onClick={() => AnswertoHint(numberToGuess)}>素数か判定</button>
+            素数か判定する：
+            <button  disabled={buttonClicked} onClick={() => AnswertoHint(numberToGuess)}>判定する</button>
         </label>
         <p>{AnswertoQuestion}</p>
     </div>

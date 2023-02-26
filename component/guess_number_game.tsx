@@ -38,29 +38,32 @@ export const GuessNumberGame = () => {
         return(
             <div className={styles.gameContainer}>
                 <h1>Guess the Number!</h1>
-                <p>
-                    ルール：
-                    <br/>
-                    1:挑戦回数は10回まで。
-                    <br/>
-                    2:質問は5回まで。
-                    <br/>
-                    3:ページを更新したり移動すると当てる数字が変わってしまいます。
-                </p>
-                <p>レスポンス：{message}</p>
+                <div className={styles.rules}>
+                    <p className={styles.item}>
+                        ルール：
+                        <br/>
+                        <p>０: 1から100の自然数からランダムに選ばれた数値を当てるゲームです。以下の操作から数字を当ててみて下さい。</p>
+                        <p>１: 半角数字でYour Guessに入力して、GUESSボタンで正解かどうかを見ます。10回間違えると終了です。</p>
+                        <p>
+                        ２: 当てる数字に対して、次の質問が合計5回まで可能です。紫色の枠内にて、質問を行えます。
+                        <br/>
+                        質問１: 1~10までの整数で割ったあまりがいくつか？
+                        <br/>
+                        質問２: 素数か否か？（この質問ができるのは1回のみ）
+                        </p>
+                        <p>３: ページを更新したり移動すると当てる数字が変わってしまいます。</p>
+                        <p>４: Show The Answerで、答えを見られます。</p>
+                        <p>５: 下にメモ欄があります。必要に応じでメモをとって下さい</p>
+                    </p>
+                </div>
+                <p className={styles.response}>{message}</p>
                 <Formofgame_1
                     setUserGuess={setUserGuess}
                     userGuess={userGuess}
                     attempts={attempts}
                     setMessage={setMessage}
                     numberToGuess={numberToGuess}
-                />
-                <GuessButton 
-                    userGuess={userGuess}
-                    numberToGuess={numberToGuess}
                     setAttempts={setAttempts}
-                    setMessage={setMessage}
-                    attempts={attempts}
                 />
                 <ShowTheAnswerButton 
                 numberToGuess={numberToGuess}

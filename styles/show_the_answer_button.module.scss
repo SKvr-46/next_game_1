@@ -1,0 +1,16 @@
+.btn {
+    all: unset;
+    cursor: pointer;
+    transition: all .3s;
+    font-size: var(--heading2);
+    margin: var(--space-xs) 0 var(--space-xs) 0;
+    background-color: rgb(206, 85, 168);
+    padding: var(--space-xs);
+    border-radius: 20px;
+    border: 1px solid gray;
+    border-bottom: 4px solid gray;
+
+    &:hover {
+        color: crimson;
+    }
+}

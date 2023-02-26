@@ -5,18 +5,20 @@ import { useRouter } from "next/router";
 import { Division_Hint } from "./division_hint";
 import { PrimeNumber_Hint } from "./primenumber_hint";
 import styles from "styles/form_of_game_1.module.scss"
+import { GuessButton } from './guess_button';
 
 type Formofgame_1PropsType = {
     setUserGuess:React.Dispatch<React.SetStateAction<string>>
     userGuess:string
     attempts:number
+    setAttempts:React.Dispatch<React.SetStateAction<number>>
     setMessage:React.Dispatch<React.SetStateAction<string>>
     numberToGuess:number
 }
 
 
 export const Formofgame_1 = (props:Formofgame_1PropsType) => {
-        const { setUserGuess,userGuess, attempts,setMessage, numberToGuess} = props
+        const { setUserGuess,userGuess, attempts,setMessage, setAttempts,numberToGuess} = props
         const [questiontime, setQuestionTime] = useState(0)
         const [divisionNumber, setDivisionNumber] = useState(0);
         const [AnswertoQuestion, setAnswertoQuestion] = useState("")
@@ -44,14 +46,26 @@ export const Formofgame_1 = (props:Formofgame_1PropsType) => {
 
     return(
         <form onSubmit={handleGuess} className={styles.formContainer}>
-            <label>
-            Your Guess:
-            <input type="text" onChange={(event) => setUserGuess(event.target.value)} />
-            </label>
-            <br />
-            <p>Total Attempts: {attempts} </p>
-            <p>質問回数：{questiontime}</p>
-            <div className={gameIsOver(attempts) ? styles.close : styles.opne}>
+            <div className={styles.responses}>
+                <label>
+                Your Guess:
+                <input type="text" onChange={(event) => setUserGuess(event.target.value)} />
+                </label>
+                <br />
+                <div className={styles.guessbutton}>
+                    <GuessButton 
+                        userGuess={userGuess}
+                        numberToGuess={numberToGuess}
+                        setAttempts={setAttempts}
+                        setMessage={setMessage}
+                        attempts={attempts}
+                    />
+                </div>
+                <br />
+                <p className={styles.attempts}>{attempts} </p>
+                <p className={styles.questiontime}>{questiontime}</p>
+            </div>
+            <div className={gameIsOver(attempts) ? styles.close : styles.open}>
                 <Division_Hint
                     setMessage={setMessage}
                     setDivisionNumber={setDivisionNumber}

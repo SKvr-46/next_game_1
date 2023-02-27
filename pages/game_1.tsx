@@ -9,10 +9,6 @@ const Game_1 = () => {
     const [numberToGuess, setNumberToGuess] = useState(0);
     const [userGuess, setUserGuess] = useState('');
     const [message, setMessage] = useState('');
-    const [attempts, setAttempts] = useState(0);
-    const [questiontime, setQuestionTime] = useState(0)
-    const [divisionNumber, setDivisionNumber] = useState(0);
-    const [AnswertoQuestion, setAnswertoQuestion] = useState("")
     const router = useRouter();
 
 
@@ -29,9 +25,8 @@ const Game_1 = () => {
             return;
         }
 
-        const guess = Number(userGuess);
 
-        if (isNaN(guess) || typeof guess != "number") {
+        if (isNaN(Number(userGuess))) {
             setMessage('Invalid input! Please enter a number.');
             return;
         }

@@ -1,7 +1,6 @@
 //YourGuessより下のフォームコンポーネント
 
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { Division_Hint } from "./division_hint";
 import { PrimeNumber_Hint } from "./primenumber_hint";
 import styles from "styles/form_of_game_1.module.scss"

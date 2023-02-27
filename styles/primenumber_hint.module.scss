@@ -4,6 +4,10 @@
     font-size: var(--body);
     font-weight: 800;
 
+    & p {
+        color: red;
+    }
+
     & button {
         transition: all .3s;
         background-color: #fff100;

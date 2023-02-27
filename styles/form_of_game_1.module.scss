@@ -26,7 +26,7 @@
             color: red;
 
             &::before {
-                content: "Total Attempts: ";
+                content: "間違えた回数: ";
                 color: black;
             }
         }

@@ -1,10 +1,12 @@
-
+import { useRouter } from "next/router"
+import Link from "next/link"
 
 const Home = () => {
-
+  const router = useRouter()
+  
   return(
     <div>
-      hI
+      <Link href="game_1">Guess The Number</Link>
     </div>
   )
 }

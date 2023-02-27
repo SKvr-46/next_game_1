@@ -39,12 +39,10 @@ const Game_1 = () => {
 
 
     return (
-        <div>
             <Container>
                 <GuessNumberGame/>
                 <MemoArea/>
             </Container>
-        </div>
     );
 };
 

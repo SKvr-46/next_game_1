@@ -31,7 +31,7 @@ export const GuessButton = (props:guessTheNumberButtonPropsType) => {
             setAttempts(attempts + 1);
             if (Number(userGuess) === numberToGuess) {
                 setMessage('Great!!!');
-                router.push(`/`);
+                // router.push(`/`);
             } else if (Number(userGuess) !== numberToGuess) {
                 setMessage('Try again.');
             }

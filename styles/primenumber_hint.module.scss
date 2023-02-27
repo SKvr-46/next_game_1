@@ -7,11 +7,13 @@
     & button {
         transition: all .3s;
         background-color: #fff100;
-        border-bottom: 3px solid #ccc100;
+        border-radius: 10px;
+        border: 2px ridge gold;
         
         &:hover {
             cursor: pointer;
             background: #fff20a;
+            border: 2px solid silver;
         }
     }
 }

@@ -8,9 +8,12 @@
     padding: var(--space-xs);
     border-radius: 20px;
     border: 1px solid gray;
-    border-bottom: 4px solid gray;
+    border-bottom: 4px ridge gray;
+    transition: all 0.3s;
 
     &:hover {
-        color: crimson;
+        color: blue;
+        filter: drop-shadow(0 0 15px aqua);
+        transition: all 0.3s;
     }
 }

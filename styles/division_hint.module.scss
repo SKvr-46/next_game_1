@@ -8,13 +8,15 @@
     & button {
         transition: all .3s;
         background-color: #fff100;
-        border-bottom: 3px solid #ccc100;
+        border: 2px ridge gold;
+        border-radius: 10px;
+
         
         &:hover {
             cursor: pointer;
             color: #000;
             background: #fff20a;
-
+            border: 2px solid silver;
         }
     }
 

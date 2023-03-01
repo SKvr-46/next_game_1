@@ -39,7 +39,7 @@
             color: red;
 
             &::before {
-                content: "間違えた回数: ";
+                content: "間違えた回数： ";
                 color: black;
             }
         }
@@ -49,7 +49,7 @@
             color: blue;
 
             &::before {
-                content: "質問した回数(最大5回): ";
+                content: "質問した回数（最大5回）： ";
                 color: black;
             }
         }

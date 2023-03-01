@@ -11,6 +11,7 @@
     }
 
     & .rules {
+        background: linear-gradient(180deg, transparent, transparent,#45f3ff,plum, orchid);
         border: 5px ridge crimson;
         border-radius: 30px;
         padding: var(--space-xs);

@@ -5,8 +5,10 @@ import { Header } from '@/component/header'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-        <Header/>
+    <Header/>
+    <div>
         <Component {...pageProps} />
+    </div>
     </>
   )
 }

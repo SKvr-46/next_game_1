@@ -1,0 +1,49 @@
+@keyframes border_style{
+    0% {
+        border: 10px ridge aqua;
+        border-radius: 15px;
+        filter: drop-shadow(0 0 20px aqua);
+    }
+
+    25% {
+        border: 10px ridge gold;
+        border-radius: 15px;
+        filter: drop-shadow(0 0 20px gold);
+    }
+
+    50% {
+        border: 10px ridge crimson;
+        border-radius: 15px;
+        filter: drop-shadow(0 0 20px crimson);
+    }
+
+    75% {
+        border: 10px ridge violet;
+        border-radius: 15px;
+        filter: drop-shadow(0 0 20px violet);
+    }
+
+    100% {
+        border: 10px ridge aquamarine;
+        border-radius: 15px;
+        filter: drop-shadow(0 0 20px aquamarine);
+    }
+}
+
+
+
+.container {
+    background: linear-gradient(180deg, transparent, transparent,#45f3ff,#45f3ff, #45f3ff);
+    margin: var(--space-md) 0 var(--space-md) 0 ;
+    border: 10px ridge aqua;
+    border-radius: 15px;
+    padding: var(--space-md);
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    animation: 10s linear infinite border_style;
+
+    & p {
+        margin-bottom: var(--space-md);
+    }
+}

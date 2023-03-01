@@ -3,13 +3,9 @@ import styles from "styles/primenumber_hint.module.scss"
 
 type PrimeNumberHintPropsType = {
     setMessage:React.Dispatch<React.SetStateAction<string>>
-    setDivisionNumber:React.Dispatch<React.SetStateAction<number>>
-    setAnswertoQuestion:React.Dispatch<React.SetStateAction<string>>
     setQuestionTime:React.Dispatch<React.SetStateAction<number>>
-    setAnswersToQuestion:React.Dispatch<React.SetStateAction<Array<string>>>
     numberToGuess:number
     questiontime:number
-    AnswertoQuestion:string
 }
 
 export const PrimeNumber_Hint = (props:PrimeNumberHintPropsType) => {
@@ -17,12 +13,10 @@ export const PrimeNumber_Hint = (props:PrimeNumberHintPropsType) => {
         setQuestionTime,
         questiontime,
         numberToGuess, 
-        setAnswertoQuestion,
-        AnswertoQuestion
     } = props
 
-    const [buttonClicked, setButtonClicked] = useState(false);
-
+    const [primeNumberButtonClicked, setPrimeNumberButtonClicked] = useState(false);
+    const [answerToPrimeNumberQuestion, setAnswerToPrimeNumberQuestion] = useState("")
 
     const  isPrime = (num:number)  => {
         // numが1以下の場合は素数でないとする
@@ -52,16 +46,17 @@ export const PrimeNumber_Hint = (props:PrimeNumberHintPropsType) => {
         }
 
 
-const AnswertoHint = (numberToGuess:number) => {
-        setQuestionTime(questiontime + 1)
-        setMessage('');
-        if (isPrime(numberToGuess) ) {
-            setAnswertoQuestion("素数です")
-        } else {
-            setAnswertoQuestion("素数ではありません")
-        }
-        setButtonClicked(true);
-}
+    const AnswerForHint = (numberToGuess:number) => {
+            setQuestionTime(questiontime + 1)
+            setMessage('');
+            if (isPrime(numberToGuess) ) {
+                setAnswerToPrimeNumberQuestion("素数です")
+            } else {
+                setAnswerToPrimeNumberQuestion("素数ではありません")
+            }
+            setPrimeNumberButtonClicked(true);
+    }
+
 
 //divisionNumberもpropsなのに正常は理由は、確かにdivisionNumberはpropsで０が初期値だが、
 //0が入っているその後、AnswertoQuestion_1の呼び出しにより、適切な順番でdivisionNumberがセットされる。
@@ -72,9 +67,9 @@ return(
     <div className={styles.primenumber_hintwrapper}>
         <label>
             素数か判定する：
-            <button  disabled={buttonClicked} onClick={() => AnswertoHint(numberToGuess)}>判定する</button>
+            <button  disabled={primeNumberButtonClicked || questiontime>=5} onClick={() => AnswerForHint(numberToGuess)}>判定する</button>
         </label>
-        <p>{AnswertoQuestion}</p>
+        <p>{answerToPrimeNumberQuestion}</p>
     </div>
 )
 }

@@ -1,0 +1,75 @@
+@media(hover:hover){
+    .btnforguess {
+        all: unset;
+        cursor: pointer;
+        font-size: var(--heading2);
+        margin: var(--space-xs) 0 var(--space-xs) 0;
+        background-color:gold;
+        padding: var(--space-xs);
+        border-radius: 20px;
+        border: 1px solid gray;
+        border-bottom: 4px ridge gray;
+        transition: all 0.4s;
+    
+        &:hover {
+            color: blue;
+            filter: drop-shadow(0 0 20px gold);
+            transition: all 0.4s;
+        }
+    }
+    
+    
+    
+    .btnforshow {
+        all: unset;
+        cursor: pointer;
+        transition: all .3s;
+        font-size: var(--heading2);
+        margin: var(--space-xs) 0 var(--space-xs) 0;
+        background-color: rgb(206, 85, 168);
+        padding: var(--space-xs);
+        border-radius: 20px;
+        border: 1px solid gray;
+        border-bottom: 4px ridge gray;
+        transition: all 0.8s;
+    
+        &:hover {
+            color: crimson;
+            filter: drop-shadow(0 0 20px crimson);
+            transition: all 0.8s;
+        }
+    }
+}
+
+
+
+@media(hover:none) {
+    .btnforguess {
+        all: unset;
+        cursor: pointer;
+        font-size: var(--heading2);
+        margin: var(--space-xs) 0 var(--space-xs) 0;
+        background-color:gold;
+        padding: var(--space-xs);
+        border-radius: 20px;
+        border: 1px solid gray;
+        border-bottom: 4px ridge gray;
+        transition: all 0.4s;
+    }
+    
+    
+    
+    .btnforshow {
+        all: unset;
+        cursor: pointer;
+        transition: all .3s;
+        font-size: var(--heading2);
+        margin: var(--space-xs) 0 var(--space-xs) 0;
+        background-color: rgb(206, 85, 168);
+        padding: var(--space-xs);
+        border-radius: 20px;
+        border: 1px solid gray;
+        border-bottom: 4px ridge gray;
+        transition: all 0.8s;
+    }
+}

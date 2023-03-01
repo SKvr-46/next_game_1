@@ -1,0 +1,33 @@
+@media(hover:hover) {
+    .btn {
+        all: unset;
+        cursor: pointer;
+        font-size: var(--body);
+        margin: 0.5em;
+        padding: var(--space-xs);
+        border-radius: 20px;
+        border: 1px solid gray;
+        border-bottom: 4px ridge gray;
+        transition: all 0.4s;
+    
+        &:hover {
+            filter: drop-shadow(0 0 10px aquamarine);
+            transition: all 0.4s;
+        }
+    }
+}
+
+
+@media(hover:none) {
+    .btn {
+        all: unset;
+        cursor: pointer;
+        font-size: var(--body);
+        margin: 0.5em;
+        padding: var(--space-xs);
+        border-radius: 20px;
+        border: 1px solid gray;
+        border-bottom: 4px ridge gray;
+        transition: all 0.4s;
+    }
+}

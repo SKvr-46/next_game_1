@@ -1,3 +1,4 @@
+
 .gameContainer {
     display: grid;
     place-items: center;
@@ -5,6 +6,7 @@
     font-weight: 800;
     margin-top: var(--space-md);
     margin-bottom: var(--space-md);
+
 
     & h1 {
         font-weight: 900;
@@ -20,15 +22,16 @@
             margin-bottom: 1em;
         }
     }
-    
-    & .response{
+
+    & .response {
         color: crimson;
         font-size: var(--heading2);
 
         &::before {
-            content:"Response:";
-            color: black;
             font-size: var(--heading2);
+            content: "Response: ";
+            color: black;
         }
     }
+
 }

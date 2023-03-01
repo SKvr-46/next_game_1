@@ -34,11 +34,6 @@ export const Nav = () => {
                     game2
                 </Link>
                 </li>
-                <li>
-                <Link href="/game_3" onClick={closeMenu}>
-                    game3
-                </Link>
-                </li>
             </ul>
         </div>
     )

@@ -1,0 +1,51 @@
+.formContainer {    
+    display: grid;
+    place-items: center;
+    font-size: var(--body);
+    font-weight: 800;
+    width: 100%;
+
+    & .predictColor {
+        margin: var(--space-xs) 0 var(--space-xs) 0;
+        color: blue;
+    }
+
+    & .allPredictColor {
+        margin: var(--space-xs) 0 var(--space-xs) 0;
+        border: 5px ridge gray;
+        padding: var(--space-xs);
+        border-radius: 15px;
+
+        & .open {
+            display: block;
+            & p {
+                margin-bottom: 0.2em;
+            }
+        }
+
+        & .close {
+            display: none;
+        }
+
+    }
+
+
+    & .attempts {
+        color: red;
+        margin-bottom: var(--space-md);
+
+        &::before {
+            content: "Attempts: ";
+            color: black;
+        }
+    }
+
+    & .buttonContainer {
+        // margin: 0 0 var(--space-md) 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}

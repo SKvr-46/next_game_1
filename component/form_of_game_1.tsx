@@ -1,28 +1,27 @@
 //YourGuessより下のフォームコンポーネント
 
-import { useState } from "react";
 import { Division_Hint } from "./division_hint";
 import { PrimeNumber_Hint } from "./primenumber_hint";
 import styles from "styles/form_of_game_1.module.scss"
-import { GuessButton } from './guess_button';
+import { PropsType } from "@/lib/api";
+import { Button } from "./button";
+import { Prime_factor_decomposition } from "./prime_factor_decomposition_hint";
+import { MemoArea } from "./memoarea";
 
-type Formofgame_1PropsType = {
-    setUserGuess:React.Dispatch<React.SetStateAction<string>>
-    userGuess:string
-    attempts:number
-    setAttempts:React.Dispatch<React.SetStateAction<number>>
-    setMessage:React.Dispatch<React.SetStateAction<string>>
-    numberToGuess:number
-}
+export const Formofgame_1 = (props:PropsType) => {
 
-
-export const Formofgame_1 = (props:Formofgame_1PropsType) => {
-        const { setUserGuess,userGuess, attempts,setMessage, setAttempts,numberToGuess} = props
-        const [questiontime, setQuestionTime] = useState(0)
-        const [divisionNumber, setDivisionNumber] = useState(0);
-        const [AnswertoQuestion, setAnswertoQuestion] = useState("")
-        const [answersToQuestion, setAnswersToQuestion] =useState<Array<string>>([])
-
+        const {    
+            setUserGuess,
+            userGuess,
+            setAttempts,
+            attempts,
+            setMessage,
+            message,
+            setNumberToGuess,
+            numberToGuess,
+            setQuestionTime,
+            questiontime,
+        } = props
 
         //フォームが送信されたときに実行されるイベントハンドラ
         const handleGuess = (event: React.FormEvent<HTMLFormElement>) => {
@@ -31,9 +30,13 @@ export const Formofgame_1 = (props:Formofgame_1PropsType) => {
             // setUserGuess('');
         };
 
-        //questiontime制御
-        
+        //ページをリロードすることで再マウントする
+        const ReloadPage = () => {
+            window.location.reload(); // ページをリロードする
+        }
 
+
+        //GameOver
         const gameIsOver = (attempts:number) => {
             if(attempts >= 10 && Number(userGuess) !== numberToGuess) {
                 return true
@@ -43,8 +46,33 @@ export const Formofgame_1 = (props:Formofgame_1PropsType) => {
             }
         }
 
+        //予測（GuessTheNumber）
+        const guessTheNumber = () => {
+            if(isNaN(Number(userGuess)) || userGuess == "") {
+                setMessage('Invalid input! Please enter a number.');
+            } else {
+                setAttempts(attempts + 1);
+                if (Number(userGuess) === numberToGuess) {
+                    setMessage('Great!!!');
+                    // router.push(`/`);
+                } else if (Number(userGuess) !== numberToGuess) {
+                    setMessage('Try again.');
+                }
+            }
+            
+        }
+
+        //答えを見る(ShowTheAnswer)
+        const showTheAnswer = () => {
+            setAttempts(10)
+            setMessage("The Answer Is:  "+ numberToGuess)
+        }
+
+
+
     return(
         <form onSubmit={handleGuess} className={styles.formContainer}>
+            <p className={styles.response}>{message}</p>
             <div className={styles.responses}>
                 <label>
                 Your Guess:
@@ -52,12 +80,11 @@ export const Formofgame_1 = (props:Formofgame_1PropsType) => {
                 </label>
                 <br />
                 <div className={styles.guessbutton}>
-                    <GuessButton 
-                        userGuess={userGuess}
-                        numberToGuess={numberToGuess}
-                        setAttempts={setAttempts}
-                        setMessage={setMessage}
-                        attempts={attempts}
+                    <Button 
+                    disabled={gameIsOver(attempts)}
+                    onClick={guessTheNumber}
+                    content={"GUESS"}
+                    buttonIsForGuess={true}
                     />
                 </div>
                 <br />
@@ -67,29 +94,40 @@ export const Formofgame_1 = (props:Formofgame_1PropsType) => {
             <div className={gameIsOver(attempts) ? styles.close : styles.open}>
                 <Division_Hint
                     setMessage={setMessage}
-                    setDivisionNumber={setDivisionNumber}
-                    setAnswertoQuestion={setAnswertoQuestion}
                     setQuestionTime={setQuestionTime}
-                    divisionNumber={divisionNumber}
                     numberToGuess={numberToGuess}
                     questiontime={questiontime}
-                    setAnswersToQuestion={setAnswersToQuestion}
-                    answersToQuestion={answersToQuestion}
                 />
                 <PrimeNumber_Hint
                     setMessage={setMessage}
-                    setDivisionNumber={setDivisionNumber}
-                    setAnswertoQuestion={setAnswertoQuestion}
                     setQuestionTime={setQuestionTime}
-                    setAnswersToQuestion={setAnswersToQuestion}
                     numberToGuess={numberToGuess}
                     questiontime={questiontime}
-                    AnswertoQuestion={AnswertoQuestion}
+                />
+                <Prime_factor_decomposition
+                    setMessage={setMessage}
+                    setQuestionTime={setQuestionTime}
+                    numberToGuess={numberToGuess}
+                    questiontime={questiontime}
+
                 />
             </div>
-            <div className={gameIsOver(attempts) ? styles.open : styles.close}>
-                今回の答え：{numberToGuess}
-            </div>
+                <div className={gameIsOver(attempts) ? styles.open : styles.close}>
+                    今回の答え：{numberToGuess}
+                </div>
+                <MemoArea/>
+                <Button 
+                    disabled={gameIsOver(attempts)}
+                    onClick={showTheAnswer}
+                    content={"Show The Answer"}
+                    buttonIsForGuess={false}
+                    />
+                <Button 
+                disabled={false}
+                onClick={ReloadPage}
+                content={"Reset This Game"}
+                buttonIsForGuess={true}
+                />
         </form>
     )
 }

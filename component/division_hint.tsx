@@ -4,28 +4,21 @@ import styles from "styles/division_hint.module.scss"
 
 type DivisionHintPropsType = {
     setMessage:React.Dispatch<React.SetStateAction<string>>
-    setDivisionNumber:React.Dispatch<React.SetStateAction<number>>
-    setAnswertoQuestion:React.Dispatch<React.SetStateAction<string>>
     setQuestionTime:React.Dispatch<React.SetStateAction<number>>
-    divisionNumber:number
     numberToGuess:number
     questiontime:number
-    setAnswersToQuestion:React.Dispatch<React.SetStateAction<Array<string>>>
-    answersToQuestion:Array<string>
 }
 
 export const Division_Hint = (props:DivisionHintPropsType) => {
 
     const {setMessage, 
-            setDivisionNumber,
             setQuestionTime,
             questiontime,
             numberToGuess, 
-            divisionNumber,
-            setAnswersToQuestion,
-            answersToQuestion,
         } = props
 
+        const [divisionNumber, setDivisionNumber] = useState(0)
+        const [answersToDivisionQuestion, setAnswersToDivisionQuestion] = useState<Array<string>>([])
 
     const AnswertoQuestion = (divisionN:number) => {
         if(isNaN(divisionN) || typeof divisionN != "number" || divisionN == 0) {
@@ -43,7 +36,7 @@ export const Division_Hint = (props:DivisionHintPropsType) => {
             // setAnswertoQuestion(String(divisionNumber) + "で割ったあまリ：" + String(divisionAnswer))
             // setAnswersToQuestion(prevAnswers => [AnswertoQuestion, ...prevAnswers]) =>これだと、Formofgame＿1の初期値が入ってしまう。
             //配列内の”AnswertoQuestion”に、コンポーネントにpropsw渡すformofgame_1で定義した初期値が入ってしまう。
-            setAnswersToQuestion(prevAnswers => [String(divisionNumber) + "で割ったあまリ：" + String(divisionAnswer), ...prevAnswers])
+            setAnswersToDivisionQuestion(prevAnswers => [String(divisionNumber) + "で割ったあまリ：" + String(divisionAnswer), ...prevAnswers])
             setMessage('');
         }
     }
@@ -56,32 +49,23 @@ export const Division_Hint = (props:DivisionHintPropsType) => {
     //ワンテンポ遅い。
     
 
-    //質問は5回までに制御
-    const toggleHintIsOpen = (questiontime:number) => {
-        if(questiontime >= 5) {
-            return false
-        } 
-        else {
-            return true
-        }
-    }
 
 
     return(
         <div className={styles.division_hintwrapper}>
             <div>
                 <label>
-                    1~10までの整数を入れて下さい：
+                    1~10のどれかで割る：
                     <input  onChange={(event) => setDivisionNumber(Number(event.target.value))}/>
                 </label>
                 <button 
                 onClick={() => AnswertoQuestion(divisionNumber)}
-                disabled={!toggleHintIsOpen(questiontime)}
+                disabled={questiontime >= 5}
                 >
                     計算する
                 </button>
             </div>
-            {answersToQuestion.map((answer, index) => (
+            {answersToDivisionQuestion.map((answer, index) => (
             <p key={index} className={styles.answer}>
             {answer}
             </p>

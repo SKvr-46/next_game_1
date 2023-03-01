@@ -1,4 +1,4 @@
-.primenumber_hintwrapper {
+.decomposition_hintwrapper {
     display: grid;
     place-items: center;
     font-size: var(--body);
@@ -7,6 +7,7 @@
 
     & p {
         color: red;
+        text-align: center;
     }
 
     & button {

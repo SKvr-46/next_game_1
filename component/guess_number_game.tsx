@@ -1,7 +1,6 @@
 //GuessTheNumberGameを総括するコンポーネント
 
 import { useState, useEffect } from 'react';
-import { ShowTheAnswerButton } from "./show_the_answer_button";
 import { Formofgame_1 } from './form_of_game_1';
 import styles from "styles/guess_number_game.module.scss"
 
@@ -10,27 +9,30 @@ export const GuessNumberGame = () => {
     const [userGuess, setUserGuess] = useState('');
     const [message, setMessage] = useState('');
     const [attempts, setAttempts] = useState(0);
+    const [AnswertoQuestion, setAnswertoQuestion] = useState("")
+    const [questiontime, setQuestionTime] = useState(0)
 
-    // const guess = Number(userGuess);
-    //     //予測される数の設定（マウント時に設定される）
-    //     useEffect(() => {
-    //         const randomNumber = Math.floor(Math.random() * 100) + 1;
-    //         setNumberToGuess(randomNumber);
-    //     }, []);
+
+    const guess = Number(userGuess);
+        //予測される数の設定（マウント時に設定される）
+        useEffect(() => {
+            const randomNumber = Math.floor(Math.random() * 100) + 1;
+            setNumberToGuess(randomNumber);
+        }, []);
     
     
-    //     useEffect(() => {
-    //         if (userGuess === '') {
-    //             setMessage('');
-    //             return;
-    //         }
+        useEffect(() => {
+            if (userGuess === '') {
+                setMessage('');
+                return;
+            }
     
-    //         if (isNaN(Number(userGuess)) || typeof guess != "number") {
-    //             setMessage('Invalid input! Please enter a number.');
-    //             return;
-    //         }
+            if (isNaN(Number(userGuess)) || typeof guess != "number") {
+                setMessage('Invalid input! Please enter a number.');
+                return;
+            }
     
-    //     }, [userGuess]);
+        }, [userGuess]);
     
 
         return(
@@ -47,29 +49,27 @@ export const GuessNumberGame = () => {
                         <br/>
                         質問１： 1~10までの整数を1つ選択し、それで割ったあまりがいくつか？
                         <br/>
-                        質問２： 素数か否か？（この質問ができるのは1回のみ）
+                        質問２： 素数か否か？（1回のみ）
+                        <br/>
+                        質問３： 素因数分解した時、異なる素因数はいくつあるか（1回のみ）
+                        <br/>
                         </p>
                         <p>３: Show The Answerで、答えを見られます。</p>
                         <p>４: ページ下にメモ欄があります。必要に応じてメモ用に使ってください。</p>
-                        <p>５: ページを更新したり、移動するとゲームやメモがリセットされます。</p>
+                        <p>５: ページを更新したり、ページ下のReset This Gameボタンで、ゲームがリセットされます。</p>
                     </div>
                 </div>
-                <p className={styles.response}>{message}</p>
                 <Formofgame_1
                     setUserGuess={setUserGuess}
                     userGuess={userGuess}
+                    setAttempts={setAttempts}
                     attempts={attempts}
                     setMessage={setMessage}
+                    message={message}
+                    setNumberToGuess={setNumberToGuess}
                     numberToGuess={numberToGuess}
-                    setAttempts={setAttempts}
-                />
-                <ShowTheAnswerButton 
-                numberToGuess={numberToGuess}
-                userGuess={userGuess}
-                attempts={attempts}
-                setAttempts={setAttempts}
-                setMessage={setMessage}
-                setNumberToGuess={setNumberToGuess}
+                    questiontime={questiontime}
+                    setQuestionTime={setQuestionTime}
                 />
             </div>
         )

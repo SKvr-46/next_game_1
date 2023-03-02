@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next'
 import { PartOfHome } from "@/component/part_of_home"
 import { Container } from "@/component/container"
 import { Meta } from '@/component/meta'
+import styles from "styles/index.module.scss"
 
 const Home = () => {
 
@@ -21,8 +22,10 @@ const Home = () => {
   return(
     <Container>
       <Meta pageTitle={"HOME"} pageDesc={"GAMELAB"}/>
-      <PartOfHome pageUrl={"/game_1"} buttonTitle={"Go To Game1"} pageexplanation={explain_1}/>
-      <PartOfHome pageUrl={"/game_2"} buttonTitle={"Go To Game2"} pageexplanation={explain_2}/>
+      <div className={styles.homewrapper}>
+        <PartOfHome pageUrl={"/game_1"} buttonTitle={"Go To Game1"} pageexplanation={explain_1}/>
+        <PartOfHome pageUrl={"/game_2"} buttonTitle={"Go To Game2"} pageexplanation={explain_2}/>
+      </div>
     </Container>
   )
 }

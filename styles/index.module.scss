@@ -1,0 +1,16 @@
+@media(min-width:768px){
+    .homewrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 2em;
+    }
+}
+
+@media(max-width:767px){
+    .homewrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}

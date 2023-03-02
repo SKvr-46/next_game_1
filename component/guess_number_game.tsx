@@ -36,7 +36,7 @@ export const GuessNumberGame = () => {
 
         return(
             <div className={styles.gameContainer}>
-                <h1>Guess the Number!</h1>
+                <h1>Guess The Number!</h1>
                 <div className={styles.rules}>
                     <div className={styles.item}>
                         ルール：

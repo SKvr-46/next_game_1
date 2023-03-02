@@ -1,7 +1,28 @@
-.textArea {
-    display: grid;
-    place-items: center;
-    font-size: var(--body);
-    font-weight: 800;
-    margin: var(--space-md);
+@media (min-width:768px){
+
+    .textArea {
+        display: grid;
+        place-items: center;
+        font-size: var(--body);
+        font-weight: 800;
+        margin: var(--space-md);
+    }
+
+}
+
+
+@media (max-width:767px){
+
+    .textArea {
+        display: grid;
+        place-items: center;
+        font-size: var(--body);
+        font-weight: 800;
+        margin: var(--space-md);
+        
+        & textarea {
+            width: 90%;
+        }
+    }
+
 }

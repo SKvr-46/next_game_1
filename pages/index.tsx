@@ -1,10 +1,9 @@
-import { useRouter } from "next/router"
+import { GetStaticProps } from 'next'
 import { PartOfHome } from "@/component/part_of_home"
-import Link from "next/link"
 import { Container } from "@/component/container"
+import { Meta } from '@/component/meta'
 
 const Home = () => {
-  const router = useRouter()
 
   const explain_1 = (
     "1から100の整数がランダムに選ばれ、その数字をプレイヤーが10回までのチャンスで当てるゲームです。\
@@ -28,6 +27,7 @@ const Home = () => {
 
   return(
     <Container>
+      <Meta pageTitle={"HOME"} pageDesc={"GAMELAB"}/>
       <PartOfHome pageUrl={"/game_1"} buttonTitle={"Go To Game1"} pageexplanation={explain_1}/>
       <PartOfHome pageUrl={"/game_2"} buttonTitle={"Go To Game2"} pageexplanation={explain_2}/>
     </Container>
@@ -36,3 +36,9 @@ const Home = () => {
 
 
 export default Home
+
+export const getStaticProps:GetStaticProps = async () => {
+  return {       
+      props : {}
+  }
+}

@@ -1,5 +1,4 @@
 import styles from "styles/button.module.scss"
-import { PropsType } from '@/lib/api';
 
 
 interface ButtonPropsType {

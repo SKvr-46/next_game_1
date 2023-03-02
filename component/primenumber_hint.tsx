@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import styles from "styles/primenumber_hint.module.scss"
 
 type PrimeNumberHintPropsType = {
@@ -21,40 +21,40 @@ export const PrimeNumber_Hint = (props:PrimeNumberHintPropsType) => {
     const  isPrime = (num:number)  => {
         // numが1以下の場合は素数でないとする
             if (num <= 1) {
-                return false;
+                return false
             }
         
             // 2は素数であるため、2であればtrueを返す
             if (num === 2) {
-                return true;
+                return true
             }
         
             // numが偶数であれば素数でないとする
             if (num % 2 === 0) {
-                return false;
+                return false
             }
         
             // numを2からnum-1までの数で割っていき、割り切れる数があれば素数でないとする
             for (let i = 3; i <= Math.sqrt(num); i += 2) {
                 if (num % i === 0) {
-                    return false;
+                    return false
                 }
             }
         
             // numが素数である場合はtrueを返す
-            return true;
+            return true
         }
 
 
     const AnswerForHint = (numberToGuess:number) => {
             setQuestionTime(questiontime + 1)
-            setMessage('');
+            setMessage('')
             if (isPrime(numberToGuess) ) {
                 setAnswerToPrimeNumberQuestion("素数です")
             } else {
                 setAnswerToPrimeNumberQuestion("素数ではありません")
             }
-            setPrimeNumberButtonClicked(true);
+            setPrimeNumberButtonClicked(true)
     }
 
 

@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react'
 import styles from "styles/division_hint.module.scss"
 
 type DivisionHintPropsType = {
@@ -22,12 +21,12 @@ export const Division_Hint = (props:DivisionHintPropsType) => {
 
     const AnswertoQuestion = (divisionN:number) => {
         if(isNaN(divisionN) || typeof divisionN != "number" || divisionN == 0) {
-            setMessage('Invalid input! Please enter a number.');
-            return;
+            setMessage('Invalid input! Please enter a number.')
+            return
         }
         else if (divisionN > 10 || divisionN <= 0 || Number.isInteger(divisionN) == false) {
-            setMessage('1~10までの整数を入力して下さい');
-            return;
+            setMessage('1~10までの整数を入力して下さい')
+            return
         }
         else {
             setQuestionTime(questiontime + 1)
@@ -37,7 +36,7 @@ export const Division_Hint = (props:DivisionHintPropsType) => {
             // setAnswersToQuestion(prevAnswers => [AnswertoQuestion, ...prevAnswers]) =>これだと、Formofgame＿1の初期値が入ってしまう。
             //配列内の”AnswertoQuestion”に、コンポーネントにpropsw渡すformofgame_1で定義した初期値が入ってしまう。
             setAnswersToDivisionQuestion(prevAnswers => [String(divisionNumber) + "で割ったあまリ：" + String(divisionAnswer), ...prevAnswers])
-            setMessage('');
+            setMessage('')
         }
     }
 

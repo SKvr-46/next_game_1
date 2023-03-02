@@ -1,13 +1,12 @@
 //YourGuessより下のフォームコンポーネント
 
-import { Division_Hint } from "./division_hint";
-import { PrimeNumber_Hint } from "./primenumber_hint";
+import { Division_Hint } from "./division_hint"
+import { PrimeNumber_Hint } from "./primenumber_hint"
 import styles from "styles/form_of_game_1.module.scss"
-import { PropsType } from "@/lib/api";
-import { Button } from "./button";
-import { Prime_factor_decomposition } from "./prime_factor_decomposition_hint";
-import { MemoArea } from "./memoarea";
-
+import { PropsType } from "@/lib/api"
+import { Button } from "./button"
+import { Prime_factor_decomposition } from "./prime_factor_decomposition_hint"
+import { MemoArea } from "./memoarea"
 export const Formofgame_1 = (props:PropsType) => {
 
         const {    
@@ -26,13 +25,13 @@ export const Formofgame_1 = (props:PropsType) => {
         //フォームが送信されたときに実行されるイベントハンドラ
         const handleGuess = (event: React.FormEvent<HTMLFormElement>) => {
             //フォームの送信ボタンをクリックした場合に、ページがリロードされるのを防止する
-            event.preventDefault();
-            // setUserGuess('');
+            event.preventDefault()
+            // setUserGuess('')
         };
 
         //ページをリロードすることで再マウントする
         const ReloadPage = () => {
-            window.location.reload(); // ページをリロードする
+            window.location.reload() // ページをリロードする
         }
 
 
@@ -49,14 +48,14 @@ export const Formofgame_1 = (props:PropsType) => {
         //予測（GuessTheNumber）
         const guessTheNumber = () => {
             if(isNaN(Number(userGuess)) || userGuess == "") {
-                setMessage('Invalid input! Please enter a number.');
+                setMessage('Invalid input! Please enter a number.')
             } else {
-                setAttempts(attempts + 1);
+                setAttempts(attempts + 1)
                 if (Number(userGuess) === numberToGuess) {
-                    setMessage('Great!!!');
+                    setMessage('Great!!!')
                     // router.push(`/`);
                 } else if (Number(userGuess) !== numberToGuess) {
-                    setMessage('Try again.');
+                    setMessage('Try again.')
                 }
             }
             

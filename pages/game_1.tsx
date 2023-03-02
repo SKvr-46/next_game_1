@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { Meta } from '@/component/meta';
 import { GuessNumberGame } from '@/component/guess_number_game';
 import { Container } from '@/component/container';
-import styles from "styles/game_1.module.scss"
+import { GetStaticProps } from 'next'
 
 const Game_1 = () => {
 
 
     return (
             <Container>
+                <Meta pageTitle={"GAME1"} pageDesc={"GAME1"}/>
                 <GuessNumberGame/>
             </Container>
     );
@@ -17,3 +17,8 @@ const Game_1 = () => {
 export default Game_1;
 
 
+export const getStaticProps:GetStaticProps = async () => {
+    return {       
+        props : {}
+    }
+}

@@ -12,7 +12,7 @@
         margin-bottom: var(--space-md);
 
         &::before {
-            content:"Response:";
+            content:"Response: ";
             color: black;
             font-size: var(--heading2);
         }

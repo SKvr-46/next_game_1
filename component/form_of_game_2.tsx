@@ -32,8 +32,8 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
         //フォームが送信されたときに実行されるイベントハンドラ
         const handleGuess = (event: React.FormEvent<HTMLFormElement>) => {
             //フォームの送信ボタンをクリックした場合に、ページがリロードされるのを防止する
-            event.preventDefault();
-            // setUserGuess('');
+            event.preventDefault()
+            // setUserGuess('')
         };
 
 
@@ -51,30 +51,30 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
 
         //メッセージ欄にhit,browを伝え、予測履歴を表示し、attemptsに１を加える。
         const guessTheColor = (predictColorArray:string[]) => {      
-            let hit = 0;
-            let blow = 0;
+            let hit = 0
+            let blow = 0
             const usedIndex = new Set(); // 重複を防ぐために使用済みのインデックスを格納するSet
             
             // 要素が合致する場合はhit、そうでない場合はbrowに数える
             for (let i = 0; i < predictColorArray.length; i++) {
                 if (randomColorSet[i] === predictColorArray[i]) {
-                    hit++;
-                    usedIndex.add(i);
+                    hit++
+                    usedIndex.add(i)
                 }
             }
             
             // hitとして数えられたインデックスは除外して、残りの要素を検索してbrowに数える
             for (let i = 0; i < predictColorArray.length; i++) {
                 if (!usedIndex.has(i) && predictColorArray.indexOf(randomColorSet[i]) !== -1) {
-                    blow++;
+                    blow++
                 }
             }
             
             //この一手間は重要で、setMessage(`${hit}..`)ともかけるが、下のmap関数でワンテンポ遅れて表示される。
             //更新されたmessageがAllpredictColorArrayに反映されるまでには、レンダリングのサイクルが必要だから。
             const newMessage = `${hit}hit, ${blow}blow`
-            setMessage(newMessage);
-            setAllPredictColorArray(prev => [...prev, [...predictColorArray, newMessage]]);         
+            setMessage(newMessage)
+            setAllPredictColorArray(prev => [...prev, [...predictColorArray, newMessage]])      
             setAttempts(attempts + 1)
             setPredictColorArray([])
         }
@@ -87,7 +87,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
 
         //ページをリロードすることで再マウントする
             const ReloadPage = () => {
-              window.location.reload(); // ページをリロードする
+              window.location.reload() // ページをリロードする
             }
 
 

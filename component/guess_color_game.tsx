@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Formofgame_2 } from "./form_of_game_2";
+import { useState, useEffect } from "react"
+import { Formofgame_2 } from "./form_of_game_2"
 import styles from "styles/guess_color_game.module.scss"
 
 export const GuessColorGame = () => {
@@ -29,7 +29,7 @@ export const GuessColorGame = () => {
             tempRandomColorSet.push(randomColor)
         }
         setRandomColorSet(tempRandomColorSet)
-    }, []);
+    }, [])
 
 
 

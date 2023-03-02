@@ -3,19 +3,17 @@ import { useState } from "react"
 
 
 type prime_factor_decompositionPropsType = {
-    setMessage:React.Dispatch<React.SetStateAction<string>>
-    setQuestionTime:React.Dispatch<React.SetStateAction<number>>
+    setQuestionCount:React.Dispatch<React.SetStateAction<number>>
     numberToGuess:number
-    questiontime:number
+    questionCount:number
 }
 
 
 export const Prime_factor_decomposition = (props:prime_factor_decompositionPropsType) => {
 
     const {
-        setMessage, 
-        setQuestionTime,
-        questiontime,
+        setQuestionCount,
+        questionCount,
         numberToGuess, 
     } = props
 
@@ -39,7 +37,7 @@ export const Prime_factor_decomposition = (props:prime_factor_decompositionProps
         function countDistinctFactors(num:number) {
             var factors = primeFactors(num)
             var distinctFactors = [1,num]; //空スタートだと、1とnum自身が入らない。
-            setQuestionTime(questiontime + 1)
+            setQuestionCount(questionCount + 1)
             setDecompositionButtonClicked(true)
             for (var i = 0; i < factors.length; i++) {
                 if (distinctFactors.indexOf(factors[i]) === -1) { //重複除去
@@ -58,7 +56,7 @@ export const Prime_factor_decomposition = (props:prime_factor_decompositionProps
                         素因数の数を数える：
                         <button 
                         onClick={() => countDistinctFactors(numberToGuess)}
-                        disabled={questiontime >= 5 || decompositionButtonClicked}
+                        disabled={questionCount >= 5 || decompositionButtonClicked}
                         >
                             素因数を数える
                         </button>

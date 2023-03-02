@@ -3,15 +3,15 @@ import styles from "styles/primenumber_hint.module.scss"
 
 type PrimeNumberHintPropsType = {
     setMessage:React.Dispatch<React.SetStateAction<string>>
-    setQuestionTime:React.Dispatch<React.SetStateAction<number>>
+    setQuestionCount:React.Dispatch<React.SetStateAction<number>>
     numberToGuess:number
-    questiontime:number
+    questionCount:number
 }
 
 export const PrimeNumber_Hint = (props:PrimeNumberHintPropsType) => {
     const {setMessage, 
-        setQuestionTime,
-        questiontime,
+        setQuestionCount,
+        questionCount,
         numberToGuess, 
     } = props
 
@@ -47,7 +47,7 @@ export const PrimeNumber_Hint = (props:PrimeNumberHintPropsType) => {
 
 
     const AnswerForHint = (numberToGuess:number) => {
-            setQuestionTime(questiontime + 1)
+            setQuestionCount(questionCount + 1)
             setMessage('')
             if (isPrime(numberToGuess) ) {
                 setAnswerToPrimeNumberQuestion("素数です")
@@ -67,7 +67,7 @@ return(
     <div className={styles.primenumber_hintwrapper}>
         <label>
             素数か判定する：
-            <button  disabled={primeNumberButtonClicked || questiontime>=5} onClick={() => AnswerForHint(numberToGuess)}>判定する</button>
+            <button  disabled={primeNumberButtonClicked || questionCount>=5} onClick={() => AnswerForHint(numberToGuess)}>判定する</button>
         </label>
         <p>{answerToPrimeNumberQuestion}</p>
     </div>

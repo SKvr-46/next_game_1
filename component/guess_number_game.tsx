@@ -9,7 +9,7 @@ export const GuessNumberGame = () => {
     const [userGuess, setUserGuess] = useState('')
     const [message, setMessage] = useState('')
     const [attempts, setAttempts] = useState(0)
-    const [questiontime, setQuestionTime] = useState(0)
+    const [questionCount, setQuestionCount] = useState(0)
 
 
     const guess = Number(userGuess);
@@ -46,7 +46,7 @@ export const GuessNumberGame = () => {
                         <p>
                         ２: 当てる数に対して、次の質問が合計5回まで可能です。紫色の枠内にて、質問を行えます。
                         <br/>
-                        質問１： 1~10までの整数を1つ選択し、それで割ったあまりがいくつか？
+                        質問１： 2~10までの整数を1つ選択し、それで割ったあまりがいくつか？
                         <br/>
                         質問２： 素数か否か？（1回のみ）
                         <br/>
@@ -65,10 +65,9 @@ export const GuessNumberGame = () => {
                     attempts={attempts}
                     setMessage={setMessage}
                     message={message}
-                    setNumberToGuess={setNumberToGuess}
                     numberToGuess={numberToGuess}
-                    questiontime={questiontime}
-                    setQuestionTime={setQuestionTime}
+                    questionCount={questionCount}
+                    setQuestionCount={setQuestionCount}
                 />
             </div>
         )

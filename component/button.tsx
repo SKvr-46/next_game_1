@@ -1,3 +1,4 @@
+//サイト全体で使うボタンコンポーネント
 import styles from "styles/button.module.scss"
 
 

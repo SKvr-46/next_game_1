@@ -41,11 +41,18 @@
     }
 
     & .buttonContainer {
-        // margin: 0 0 var(--space-md) 0;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+    }
+
+
+    & .btnwrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1em;
     }
 }

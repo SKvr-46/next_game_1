@@ -7,9 +7,8 @@ type Formofgame_2PropsType = {
     randomColorSet: Array<string>
     attempts:number,
     setAttempts:React.Dispatch<React.SetStateAction<number>>
-    message: string,
     setMessage:React.Dispatch<React.SetStateAction<string>>
-    predictColorArray: string[]
+    predictColorArray: Array<string>
     setPredictColorArray: React.Dispatch<React.SetStateAction<string[]>>
     AllpredictColorArray:string[][]
     setAllPredictColorArray:React.Dispatch<React.SetStateAction<string[][]>>
@@ -23,7 +22,6 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
         setPredictColorArray,
         attempts, 
         setAttempts, 
-        message, 
         setMessage,
         AllpredictColorArray,
         setAllPredictColorArray
@@ -50,33 +48,45 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
         }
 
         //メッセージ欄にhit,browを伝え、予測履歴を表示し、attemptsに１を加える。
-        const guessTheColor = (predictColorArray:string[]) => {      
-            let hit = 0
-            let blow = 0
-            const usedIndex = new Set(); // 重複を防ぐために使用済みのインデックスを格納するSet
+        const guessTheColor = (predictColorArray:string[]) => {   
             
-            // 要素が合致する場合はhit、そうでない場合はbrowに数える
-            for (let i = 0; i < predictColorArray.length; i++) {
-                if (randomColorSet[i] === predictColorArray[i]) {
-                    hit++
-                    usedIndex.add(i)
+            //文字列はプリミティブなデータ型なので、predictColorArray === randomColorSetという比較は、期待したように動作しない。
+            const isMatch = predictColorArray.every((color, index) => color === randomColorSet[index]);
+                if (isMatch) {
+                    const collectMessage = "Great!!"
+                    setMessage(collectMessage)
+                    const newMessage = "4hit, 0blow"
+                    setAllPredictColorArray(prev => [...prev, [...predictColorArray, newMessage]])      
+                    setAttempts(attempts)
+                    setPredictColorArray([])
+                } else {
+                    let hit = 0
+                    let blow = 0
+                    const usedIndex = new Set(); // 重複を防ぐために使用済みのインデックスを格納するSet
+                    // 要素が合致する場合はhit、そうでない場合はbrowに数える
+                    for (let i = 0; i < predictColorArray.length; i++) {
+                        if (randomColorSet[i] === predictColorArray[i]) {
+                            hit++
+                            usedIndex.add(i)
+                        }
+                    }
+                    
+                    // hitとして数えられたインデックスは除外して、残りの要素を検索してbrowに数える
+                    for (let i = 0; i < predictColorArray.length; i++) {
+                        if (!usedIndex.has(i) && predictColorArray.indexOf(randomColorSet[i]) !== -1) {
+                            blow++
+                        }
+                    }
+                    
+                    //この一手間は重要で、setMessage(`${hit}..`)ともかけるが、下のmap関数でワンテンポ遅れて表示される。
+                    //更新されたmessageがAllpredictColorArrayに反映されるまでには、レンダリングのサイクルが必要だから。
+                    const newMessage = `${hit}hit, ${blow}blow`
+                    setMessage(newMessage)
+                    setAllPredictColorArray(prev => [...prev, [...predictColorArray, newMessage]])      
+                    setAttempts(attempts + 1)
+                    setPredictColorArray([])
                 }
-            }
             
-            // hitとして数えられたインデックスは除外して、残りの要素を検索してbrowに数える
-            for (let i = 0; i < predictColorArray.length; i++) {
-                if (!usedIndex.has(i) && predictColorArray.indexOf(randomColorSet[i]) !== -1) {
-                    blow++
-                }
-            }
-            
-            //この一手間は重要で、setMessage(`${hit}..`)ともかけるが、下のmap関数でワンテンポ遅れて表示される。
-            //更新されたmessageがAllpredictColorArrayに反映されるまでには、レンダリングのサイクルが必要だから。
-            const newMessage = `${hit}hit, ${blow}blow`
-            setMessage(newMessage)
-            setAllPredictColorArray(prev => [...prev, [...predictColorArray, newMessage]])      
-            setAttempts(attempts + 1)
-            setPredictColorArray([])
         }
 
         //答えを見る(ShowTheAnswer)
@@ -85,8 +95,15 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
             setMessage("The Answer Is:  "+ randomColorSet)
         }
 
+        //予想配列の末尾を消去
+        const deletePredictArray = (predictColorArray:string[]) => {
+            const newArray = [...predictColorArray]
+            newArray.pop()
+            setPredictColorArray(newArray)
+        }
+
         //ページをリロードすることで再マウントする
-            const ReloadPage = () => {
+            const reloadPage = () => {
               window.location.reload() // ページをリロードする
             }
 
@@ -96,7 +113,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 <p className={styles.predictColor}
                 >{predictColorArray.join(',')}</p>
                 <div className={styles.allPredictColor}>
-                    <div className={gameIsOver(attempts) ? styles.close : styles.opne}>
+                    <div>
                         Results：
                         {AllpredictColorArray.map((predictColorArray, index) => (
                         <p key={index}>
@@ -105,9 +122,10 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                         ))}
                     </div>
                     <div className={gameIsOver(attempts) ? styles.open : styles.close}>
-                            今回の答え：{randomColorSet.join(', ')}
+                        <p>今回の答え：{randomColorSet.join(', ')}</p>
                     </div>
                 </div>
+                
             <ul className={styles.buttonContainer}>
                 <li>
                 <ChooseColorButton
@@ -190,25 +208,29 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>    
             </ul>
-            <div>
+                
+            <div className={styles.btnwrapper}>
                 <Button 
                 disabled={gameIsOver(attempts) || predictColorArray.length < 4}
                 onClick={() => guessTheColor(predictColorArray)}
                 content={"GUESS"}
                 buttonIsForGuess={true}
                 />
+                <Button 
+                onClick={() => deletePredictArray(predictColorArray)}
+                content={"Delete"}
+                buttonIsForGuess={true}
+            />
             </div>
             <p className={styles.attempts}>{attempts}</p>
             <MemoArea/>
             <Button 
-            disabled={false}
             onClick={showTheAnswer}
             content={"Show The Answer"}
             buttonIsForGuess={false}
             />
             <Button 
-            disabled={false}
-            onClick={ReloadPage}
+            onClick={reloadPage}
             content={"Reset This Game"}
             buttonIsForGuess={true}
             />

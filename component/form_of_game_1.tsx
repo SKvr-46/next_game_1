@@ -3,11 +3,24 @@
 import { Division_Hint } from "./division_hint"
 import { PrimeNumber_Hint } from "./primenumber_hint"
 import styles from "styles/form_of_game_1.module.scss"
-import { PropsType } from "@/lib/api"
 import { Button } from "./button"
 import { Prime_factor_decomposition } from "./prime_factor_decomposition_hint"
 import { MemoArea } from "./memoarea"
-export const Formofgame_1 = (props:PropsType) => {
+
+
+type Formofgame_1PropsType = {
+    numberToGuess:number
+    setUserGuess:React.Dispatch<React.SetStateAction<string>>
+    userGuess:string
+    setMessage:React.Dispatch<React.SetStateAction<string>>
+    message:string
+    setAttempts:React.Dispatch<React.SetStateAction<number>>
+    attempts:number
+    setQuestionCount:React.Dispatch<React.SetStateAction<number>>
+    questionCount:number
+}
+
+export const Formofgame_1 = (props:Formofgame_1PropsType) => {
 
         const {    
             setUserGuess,
@@ -16,10 +29,9 @@ export const Formofgame_1 = (props:PropsType) => {
             attempts,
             setMessage,
             message,
-            setNumberToGuess,
             numberToGuess,
-            setQuestionTime,
-            questiontime,
+            setQuestionCount,
+            questionCount,
         } = props
 
         //フォームが送信されたときに実行されるイベントハンドラ
@@ -30,7 +42,7 @@ export const Formofgame_1 = (props:PropsType) => {
         };
 
         //ページをリロードすることで再マウントする
-        const ReloadPage = () => {
+        const reloadPage = () => {
             window.location.reload() // ページをリロードする
         }
 
@@ -88,26 +100,25 @@ export const Formofgame_1 = (props:PropsType) => {
                 </div>
                 <br />
                 <p className={styles.attempts}>{attempts} </p>
-                <p className={styles.questiontime}>{questiontime}</p>
+                <p className={styles.questiontime}>{questionCount}</p>
             </div>
             <div className={gameIsOver(attempts) ? styles.close : styles.open}>
                 <Division_Hint
                     setMessage={setMessage}
-                    setQuestionTime={setQuestionTime}
+                    setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
-                    questiontime={questiontime}
+                    questionCount={questionCount}
                 />
                 <PrimeNumber_Hint
                     setMessage={setMessage}
-                    setQuestionTime={setQuestionTime}
+                    setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
-                    questiontime={questiontime}
+                    questionCount={questionCount}
                 />
                 <Prime_factor_decomposition
-                    setMessage={setMessage}
-                    setQuestionTime={setQuestionTime}
+                    setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
-                    questiontime={questiontime}
+                    questionCount={questionCount}
 
                 />
             </div>
@@ -122,8 +133,7 @@ export const Formofgame_1 = (props:PropsType) => {
                     buttonIsForGuess={false}
                     />
                 <Button 
-                disabled={false}
-                onClick={ReloadPage}
+                onClick={reloadPage}
                 content={"Reset This Game"}
                 buttonIsForGuess={true}
                 />

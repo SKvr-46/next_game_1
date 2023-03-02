@@ -1,35 +1,36 @@
+//整数で割ったあまりを算出するコンポーネント
 import { useState, useEffect } from 'react'
 import styles from "styles/division_hint.module.scss"
 
 type DivisionHintPropsType = {
     setMessage:React.Dispatch<React.SetStateAction<string>>
-    setQuestionTime:React.Dispatch<React.SetStateAction<number>>
+    setQuestionCount:React.Dispatch<React.SetStateAction<number>>
     numberToGuess:number
-    questiontime:number
+    questionCount:number
 }
 
 export const Division_Hint = (props:DivisionHintPropsType) => {
 
     const {setMessage, 
-            setQuestionTime,
-            questiontime,
+            setQuestionCount,
+            questionCount,
             numberToGuess, 
         } = props
 
         const [divisionNumber, setDivisionNumber] = useState(0)
         const [answersToDivisionQuestion, setAnswersToDivisionQuestion] = useState<Array<string>>([])
 
-    const AnswertoQuestion = (divisionN:number) => {
+    const answerToQuestion = (divisionN:number) => {
         if(isNaN(divisionN) || typeof divisionN != "number" || divisionN == 0) {
             setMessage('Invalid input! Please enter a number.')
             return
         }
-        else if (divisionN > 10 || divisionN <= 0 || Number.isInteger(divisionN) == false) {
-            setMessage('1~10までの整数を入力して下さい')
+        else if (divisionN > 10 || divisionN <= 1 || Number.isInteger(divisionN) == false) {
+            setMessage('2~10までの整数を入力して下さい')
             return
         }
         else {
-            setQuestionTime(questiontime + 1)
+            setQuestionCount(questionCount + 1)
             const divisionAnswer = numberToGuess % divisionN
             setDivisionNumber(divisionNumber)
             // setAnswertoQuestion(String(divisionNumber) + "で割ったあまリ：" + String(divisionAnswer))
@@ -54,12 +55,12 @@ export const Division_Hint = (props:DivisionHintPropsType) => {
         <div className={styles.division_hintwrapper}>
             <div>
                 <label>
-                    1~10のどれかで割る：
+                    2~10のどれかで割る：
                     <input  onChange={(event) => setDivisionNumber(Number(event.target.value))}/>
                 </label>
                 <button 
-                onClick={() => AnswertoQuestion(divisionNumber)}
-                disabled={questiontime >= 5}
+                onClick={() => answerToQuestion(divisionNumber)}
+                disabled={questionCount >= 5}
                 >
                     計算する
                 </button>

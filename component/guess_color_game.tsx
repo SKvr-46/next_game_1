@@ -63,9 +63,10 @@ export const GuessColorGame = () => {
                         [Black, Blue, White,Aqua]と選ぶと、1hit, 0blow。
 
                         </p>
-                        <p>３: Show The Answerで、答えを見られます。</p>
-                        <p>４: ページ下にメモ欄があります。必要に応じてメモ用に使ってください。</p>
-                        <p>５: ページを更新したり、ページ下のReset This Gameボタンで、ゲームがリセットされます。</p>
+                        <p>３: Deleteボタンは、最後に押した色のボタン操作を取り消します。</p>
+                        <p>４: Show The Answerで、答えを見られます。</p>
+                        <p>５: ページ下にメモ欄があります。必要に応じてメモ用に使ってください。</p>
+                        <p>６: ページを更新したり、ページ下のReset This Gameボタンで、ゲームがリセットされます。</p>
                     </div>
                 </div>
             <p className={styles.response}>{message}</p>
@@ -75,7 +76,6 @@ export const GuessColorGame = () => {
             setPredictColorArray={setPredictColorArray}
             attempts={attempts}
             setAttempts={setAttempts}
-            message={message}
             setMessage={setMessage}
             AllpredictColorArray={AllpredictColorArray}
             setAllPredictColorArray={setAllPredictColorArray}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import { Formofgame_2 } from "./form_of_game_2"
-import styles from "styles/guess_color_game.module.scss"
+import { Formofgame2 } from "./formOfGame2"
+import styles from "styles/guessColorGame.module.scss"
 
 export const GuessColorGame = () => {
     const colorSet = [
@@ -21,6 +21,8 @@ export const GuessColorGame = () => {
     const [predictColorArray, setPredictColorArray] = useState<string[]>([])
     const [AllpredictColorArray, setAllPredictColorArray] = useState<string[][]>([])
 
+
+    //当てる4つの色をランダムに決める
     useEffect(() => {
         let tempRandomColorSet: string[] = [];
         while (tempRandomColorSet.length < 4) {
@@ -70,7 +72,7 @@ export const GuessColorGame = () => {
                     </div>
                 </div>
             <p className={styles.response}>{message}</p>
-            <Formofgame_2 
+            <Formofgame2 
             randomColorSet={randomColorSet}
             predictColorArray={predictColorArray}
             setPredictColorArray={setPredictColorArray}

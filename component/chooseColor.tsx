@@ -1,14 +1,15 @@
 //Game2で使う色のボタンコンポーネント
-import styles from "styles/choose_color_button.module.scss"
+import styles from "styles/chooseColor.module.scss"
 
-type ChooseColorButtonPropsType = {
+type ChooseColorPropsType = {
     color:string
+    //プレイヤーの予想した色
     predictColorArray:string[]
     setPredictColorArray: React.Dispatch<React.SetStateAction<string[]>>
     attempts:number
 }
 
-export const ChooseColorButton = (props:ChooseColorButtonPropsType) => {
+export const ChooseColor = (props:ChooseColorPropsType) => {
 
     const {color, predictColorArray,setPredictColorArray, attempts} = props
 
@@ -16,16 +17,15 @@ export const ChooseColorButton = (props:ChooseColorButtonPropsType) => {
         ["Red","Black", "Blue", "Purple","Brown"].includes(color) ? "white" : "black"
         )
 
-
+    //ボタンの色を変えるためのスタイル
     const buttonStyle = {
         backgroundColor: color,
         color: blackOrWhite(color)
     }
-
-    //4つ以上は押せず、間違えた回数が10回以上では押せない。
     return(
         <button
         onClick={() => setPredictColorArray([...predictColorArray, color])}
+        
         disabled={predictColorArray.length >= 4 || attempts >= 10}
         className={styles.btn}
         style={buttonStyle}

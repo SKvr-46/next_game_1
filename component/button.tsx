@@ -9,7 +9,7 @@ interface ButtonPropsType {
     buttonIsForGuess: boolean
 }
 
-//このボタンを押すと、挑戦回数が0に、メッセージに答えがでて、ゲームの目的である数値が変更される。
+//挑戦回数を0にリセット、メッセージに答えがでて、ゲームの目的である数値が変更される。
 export const Button = (props:ButtonPropsType) => {
     const {disabled, onClick, content, buttonIsForGuess} = props
 

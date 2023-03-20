@@ -1,9 +1,9 @@
-import styles from "styles/form_of_game_2.module.scss"
+import styles from "styles/formOfGame2.module.scss"
 import { Button } from "./button";
-import { ChooseColorButton } from "./choose_color_button";
+import { ChooseColor } from "./chooseColor";
 import { MemoArea } from "./memoarea";
 
-type Formofgame_2PropsType = {
+type Formofgame2PropsType = {
     randomColorSet: Array<string>
     attempts:number,
     setAttempts:React.Dispatch<React.SetStateAction<number>>
@@ -14,7 +14,7 @@ type Formofgame_2PropsType = {
     setAllPredictColorArray:React.Dispatch<React.SetStateAction<string[][]>>
 }
 
-export const Formofgame_2 = (props:Formofgame_2PropsType) => {
+export const Formofgame2 = (props:Formofgame2PropsType) => {
 
     const {
         randomColorSet,
@@ -128,7 +128,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 
             <ul className={styles.buttonContainer}>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Red"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -136,7 +136,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Blue"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -144,7 +144,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Yellow"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -152,7 +152,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Green"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -160,7 +160,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Black"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -168,7 +168,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"White"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -176,7 +176,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Purple"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -184,7 +184,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Pink"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -192,7 +192,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />
                 </li>
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Brown"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}
@@ -200,7 +200,7 @@ export const Formofgame_2 = (props:Formofgame_2PropsType) => {
                 />      
                 </li>  
                 <li>
-                <ChooseColorButton
+                <ChooseColor
                 color={"Aqua"}
                 predictColorArray={predictColorArray}
                 setPredictColorArray={setPredictColorArray}

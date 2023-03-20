@@ -1,8 +1,8 @@
 //GuessTheNumberGameを総括するコンポーネント
 
 import { useState, useEffect } from 'react'
-import { Formofgame_1 } from './form_of_game_1'
-import styles from "styles/guess_number_game.module.scss"
+import { Formofgame1 } from './formOfGame1'
+import styles from "styles/guessNumberGame.module.scss"
 
 export const GuessNumberGame = () => {
     const [numberToGuess, setNumberToGuess] = useState(0)
@@ -20,6 +20,7 @@ export const GuessNumberGame = () => {
         }, []);
     
     
+        //当てる数字をランダムに決める。
         useEffect(() => {
             if (userGuess === '') {
                 setMessage('')
@@ -58,7 +59,7 @@ export const GuessNumberGame = () => {
                         <p>５: ページを更新したり、ページ下のReset This Gameボタンで、ゲームがリセットされます。</p>
                     </div>
                 </div>
-                <Formofgame_1
+                <Formofgame1
                     setUserGuess={setUserGuess}
                     userGuess={userGuess}
                     setAttempts={setAttempts}

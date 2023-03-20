@@ -1,15 +1,15 @@
-import styles from "styles/prime_factor_decomposition_hint.module.scss"
+import styles from "styles/primeFactorDecompositionHint.module.scss"
 import { useState } from "react"
 
 
-type prime_factor_decompositionPropsType = {
+type primeFactorDecompositionHintPropsType = {
     setQuestionCount:React.Dispatch<React.SetStateAction<number>>
     numberToGuess:number
     questionCount:number
 }
 
 
-export const Prime_factor_decomposition = (props:prime_factor_decompositionPropsType) => {
+export const PrimeFactorDecompositionHint = (props:primeFactorDecompositionHintPropsType) => {
 
     const {
         setQuestionCount,

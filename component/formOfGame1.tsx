@@ -1,14 +1,14 @@
 //YourGuessより下のフォームコンポーネント
 
-import { Division_Hint } from "./division_hint"
-import { PrimeNumber_Hint } from "./primenumber_hint"
-import styles from "styles/form_of_game_1.module.scss"
+import { DivisionHint } from "./divisionHint"
+import { PrimeNumberHint } from "./primenumberHint"
+import styles from "styles/formOfGame1.module.scss"
 import { Button } from "./button"
-import { Prime_factor_decomposition } from "./prime_factor_decomposition_hint"
+import { PrimeFactorDecompositionHint } from "./primeFactorDecompositionHint"
 import { MemoArea } from "./memoarea"
 
 
-type Formofgame_1PropsType = {
+type Formofgame1PropsType = {
     numberToGuess:number
     setUserGuess:React.Dispatch<React.SetStateAction<string>>
     userGuess:string
@@ -20,7 +20,7 @@ type Formofgame_1PropsType = {
     questionCount:number
 }
 
-export const Formofgame_1 = (props:Formofgame_1PropsType) => {
+export const Formofgame1 = (props:Formofgame1PropsType) => {
 
         const {    
             setUserGuess,
@@ -103,19 +103,19 @@ export const Formofgame_1 = (props:Formofgame_1PropsType) => {
                 <p className={styles.questiontime}>{questionCount}</p>
             </div>
             <div className={gameIsOver(attempts) ? styles.close : styles.open}>
-                <Division_Hint
+                <DivisionHint
                     setMessage={setMessage}
                     setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
                     questionCount={questionCount}
                 />
-                <PrimeNumber_Hint
+                <PrimeNumberHint
                     setMessage={setMessage}
                     setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
                     questionCount={questionCount}
                 />
-                <Prime_factor_decomposition
+                <PrimeFactorDecompositionHint
                     setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
                     questionCount={questionCount}

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import styles from "styles/primenumber_hint.module.scss"
+import styles from "styles/primenumberHint.module.scss"
 
 type PrimeNumberHintPropsType = {
     setMessage:React.Dispatch<React.SetStateAction<string>>
@@ -8,7 +8,7 @@ type PrimeNumberHintPropsType = {
     questionCount:number
 }
 
-export const PrimeNumber_Hint = (props:PrimeNumberHintPropsType) => {
+export const PrimeNumberHint = (props:PrimeNumberHintPropsType) => {
     const {setMessage, 
         setQuestionCount,
         questionCount,

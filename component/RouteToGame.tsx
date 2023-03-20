@@ -1,6 +1,6 @@
 import { Button } from "./button"
 import { useRouter } from "next/router"
-import styles from "styles/part_of_home.module.scss"
+import styles from "styles/routeToGame.module.scss"
 
 type HomePropsType = {
     pageUrl:string
@@ -8,7 +8,7 @@ type HomePropsType = {
     pageexplanation:string
 }
 
-export const PartOfHome = (props:HomePropsType) => {
+export const RouteToGame = (props:HomePropsType) => {
     const {pageUrl, buttonTitle, pageexplanation} = props
 
     const router = useRouter()

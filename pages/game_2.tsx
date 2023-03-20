@@ -1,5 +1,5 @@
 import { Container } from "@/component/container";
-import { GuessColorGame } from "@/component/guess_color_game";
+import { GuessColorGame } from "@/component/guessColorGame";
 import { GetStaticProps } from 'next'
 import { Meta } from "@/component/meta";
 

@@ -1,6 +1,6 @@
 //整数で割ったあまりを算出するコンポーネント
 import { useState, useEffect } from 'react'
-import styles from "styles/division_hint.module.scss"
+import styles from "styles/divisionHint.module.scss"
 
 type DivisionHintPropsType = {
     setMessage:React.Dispatch<React.SetStateAction<string>>
@@ -9,7 +9,7 @@ type DivisionHintPropsType = {
     questionCount:number
 }
 
-export const Division_Hint = (props:DivisionHintPropsType) => {
+export const DivisionHint = (props:DivisionHintPropsType) => {
 
     const {setMessage, 
             setQuestionCount,
@@ -19,6 +19,7 @@ export const Division_Hint = (props:DivisionHintPropsType) => {
 
         const [divisionNumber, setDivisionNumber] = useState(0)
         const [answersToDivisionQuestion, setAnswersToDivisionQuestion] = useState<Array<string>>([])
+
 
     const answerToQuestion = (divisionN:number) => {
         if(isNaN(divisionN) || typeof divisionN != "number" || divisionN == 0) {

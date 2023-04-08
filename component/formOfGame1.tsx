@@ -116,10 +116,10 @@ export const Formofgame1 = (props:Formofgame1PropsType) => {
                     questionCount={questionCount}
                 />
                 <PrimeFactorDecompositionHint
+                    setMessage={setMessage}
                     setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
                     questionCount={questionCount}
-
                 />
             </div>
                 <div className={gameIsOver(attempts) ? styles.open : styles.close}>

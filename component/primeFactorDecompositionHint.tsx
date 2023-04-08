@@ -3,6 +3,7 @@ import { useState } from "react"
 
 
 type primeFactorDecompositionHintPropsType = {
+    setMessage:React.Dispatch<React.SetStateAction<string>>
     setQuestionCount:React.Dispatch<React.SetStateAction<number>>
     numberToGuess:number
     questionCount:number
@@ -12,6 +13,7 @@ type primeFactorDecompositionHintPropsType = {
 export const PrimeFactorDecompositionHint = (props:primeFactorDecompositionHintPropsType) => {
 
     const {
+        setMessage,
         setQuestionCount,
         questionCount,
         numberToGuess, 
@@ -36,9 +38,10 @@ export const PrimeFactorDecompositionHint = (props:primeFactorDecompositionHintP
         
         function countDistinctFactors(num:number) {
             var factors = primeFactors(num)
-            var distinctFactors = [1,num]; //空スタートだと、1とnum自身が入らない。
+            var distinctFactors = [1,num]  //空スタートだと、1とnum自身が入らない。
             setQuestionCount(questionCount + 1)
             setDecompositionButtonClicked(true)
+            setMessage('')
             for (var i = 0; i < factors.length; i++) {
                 if (distinctFactors.indexOf(factors[i]) === -1) { //重複除去
                     distinctFactors.push(factors[i])

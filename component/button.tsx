@@ -1,5 +1,6 @@
 //サイト全体で使うボタンコンポーネント
 import styles from "styles/button.module.scss"
+import {memo} from "react"
 
 
 interface ButtonPropsType {
@@ -10,7 +11,7 @@ interface ButtonPropsType {
 }
 
 //挑戦回数を0にリセット、メッセージに答えがでて、ゲームの目的である数値が変更される。
-export const Button = (props:ButtonPropsType) => {
+export const Button = memo((props:ButtonPropsType) => {
     const {disabled, onClick, content, buttonIsForGuess} = props
 
     return(
@@ -22,4 +23,5 @@ export const Button = (props:ButtonPropsType) => {
             {content}
         </button>
     )
-}
+})
+

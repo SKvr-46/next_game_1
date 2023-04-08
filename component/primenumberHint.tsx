@@ -9,7 +9,8 @@ type PrimeNumberHintPropsType = {
 }
 
 export const PrimeNumberHint = (props:PrimeNumberHintPropsType) => {
-    const {setMessage, 
+    const {
+        setMessage, 
         setQuestionCount,
         questionCount,
         numberToGuess, 

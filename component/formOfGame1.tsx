@@ -2,6 +2,7 @@
 
 import { DivisionHint } from "./divisionHint"
 import { PrimeNumberHint } from "./primenumberHint"
+import { HighOrLowHint } from "./highOrLowHint"
 import styles from "styles/formOfGame1.module.scss"
 import { Button } from "./button"
 import { PrimeFactorDecompositionHint } from "./primeFactorDecompositionHint"
@@ -120,6 +121,12 @@ export const Formofgame1 = (props:Formofgame1PropsType) => {
                     setQuestionCount={setQuestionCount}
                     numberToGuess={numberToGuess}
                     questionCount={questionCount}
+                />
+                <HighOrLowHint
+                setMessage={setMessage}
+                setQuestionCount={setQuestionCount}
+                numberToGuess={numberToGuess}
+                questionCount={questionCount}
                 />
             </div>
                 <div className={gameIsOver(attempts) ? styles.open : styles.close}>

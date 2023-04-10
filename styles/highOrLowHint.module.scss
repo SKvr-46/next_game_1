@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    place-items: center;
+    font-size: var(--body);
+    font-weight: 800;
+    margin: var(--space-xs) 0 var(--space-xs) 0;
+
+
+    & button {
+        transition: all .3s;
+        background-color: #fff100;
+        border: 2px ridge gold;
+        border-radius: 10px;
+
+        
+        &:hover {
+            cursor: pointer;
+            background: #fff20a;
+            border: 2px solid silver;
+        }
+    }
+
+    & .answer {
+        color: blueviolet;
+    }
+}

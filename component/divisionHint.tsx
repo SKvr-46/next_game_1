@@ -1,5 +1,5 @@
 //整数で割ったあまりを算出するコンポーネント
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styles from "styles/divisionHint.module.scss"
 
 type DivisionHintPropsType = {

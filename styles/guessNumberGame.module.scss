@@ -20,6 +20,11 @@
         & .item > * + *  {
             margin-bottom: 1em;
         }
+
+        & .que::after{
+            content: '（1回のみ & 質問2回分）';
+            color: rgb(160, 20, 50);
+        }
     }
     
     & .response{

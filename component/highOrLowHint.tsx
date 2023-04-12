@@ -39,7 +39,7 @@ export const HighOrLowHint = (props: HighOrLowHinttPropsType) => {
     return (
         <div className={styles.container}>
             <div>
-                <label>High or Low を知る：
+                <label>High or Low：
                 <input
                     onChange={(event) => setHighOrLowNumber(Number(event.target.value))}
                     />

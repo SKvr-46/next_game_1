@@ -2,8 +2,9 @@
     .homewrapper {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         gap: 2em;
+        min-height: 100vh;
     }
 }
 
@@ -11,6 +12,6 @@
     .homewrapper {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
     }
 }

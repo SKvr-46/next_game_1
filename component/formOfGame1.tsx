@@ -132,6 +132,7 @@ export const Formofgame1 = (props:Formofgame1PropsType) => {
                 <div className={gameIsOver(attempts) ? styles.open : styles.close}>
                     今回の答え：{numberToGuess}
                 </div>
+                
                 <MemoArea/>
                 <Button 
                     disabled={gameIsOver(attempts)}

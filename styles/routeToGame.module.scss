@@ -37,9 +37,11 @@
     margin: var(--space-md) 0 var(--space-md) 0 ;
     border: 10px ridge aqua;
     border-radius: 15px;
-    padding: var(--space-md);
-    display: grid;
-    place-items: center;
+    padding: var(--space-xs) var(--space-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-weight: 800;
     animation: 10s linear infinite border_style;
 

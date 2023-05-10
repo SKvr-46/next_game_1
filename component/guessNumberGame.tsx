@@ -61,7 +61,7 @@ export const GuessNumberGame = () => {
                         </p>
                         <p>３: Show The Answerで、答えを見られます。</p>
                         <p>４: ページ下にメモ欄があります。必要に応じてメモ用に使ってください。</p>
-                        <p>５: ページを更新したり、ページ下のReset This Gameボタンで、ゲームがリセットされます。</p>
+                        <p>５: ページを更新または、ページ下のReset This Gameボタンで、ゲームがリセットされます。</p>
                     </div>
                 </div>
                 <Formofgame1
